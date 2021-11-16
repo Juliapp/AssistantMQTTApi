@@ -5,11 +5,11 @@ dotenv.config();
 
 export const startClient = async () => {
   let options = {
-    host: process.env.HOST,
+    host: process.env.HIHOST,
     port: process.env.HIPORT,
     protocol: 'mqtts',
     username: process.env.HIUSERNAME,
-    password: process.env.PASSWORD,
+    password: process.env.HIPASSWORD,
   };
 
   var client = await mqtt.connect(process.env.HOST, options);
