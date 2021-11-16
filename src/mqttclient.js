@@ -6,7 +6,7 @@ dotenv.config();
 export const startClient = async () => {
   let options = {
     host: process.env.HOST,
-    port: process.env.PORT,
+    port: process.env.HIPORT,
     protocol: 'mqtts',
     username: process.env.HIUSERNAME,
     password: process.env.PASSWORD,
