@@ -1,4 +1,4 @@
-export default commands = {
+export default {
   'Ligar modo automático': {
     topic: 'AUTOMATICMODE/SETLIGADO',
     message: '',

@@ -10,8 +10,8 @@ routes.get('/', (req, res) => {
 });
 
 routes.post('/comandovoz', (req, res) => {
-  console.log(req.body.queryResult.queryText);
-  console.log(req.body.queryResult.parameters);
+  console.log(req.body?.queryResult.queryText);
+  console.log(req.body?.queryResult.parameters);
   // let { queryText, queryText } = req.body.queryResult;
   // const publishment = commands[queryText];
   // mqttClient.publish(publishment.topic, 'LIGAR');
