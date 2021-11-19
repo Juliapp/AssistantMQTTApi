@@ -9,7 +9,7 @@ routes.get('/', (req, res) => {
   return res.send('Application is running');
 });
 
-routes.get('/comandovoz/arcondicionado', (req, res) => {
+routes.post('/comandovoz/arcondicionado', (req, res) => {
   mqttClient.publish('ARCONDICIONADO/LIGAR', 'LIGAR');
   // console.log(req.params, req.body, req.params);
   console.log('entrou na rota');
