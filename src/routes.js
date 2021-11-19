@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { startClient } from './mqttclient.js';
-
+import commands from './commands.js';
 const mqttClient = await startClient();
 const routes = Router();
 
@@ -9,22 +9,13 @@ routes.get('/', (req, res) => {
   return res.send('Application is running');
 });
 
-routes.post('/comandovoz/arcondicionado', (req, res) => {
-  mqttClient.publish('ARCONDICIONADO/LIGAR', 'LIGAR');
-  // console.log(req.params, req.body, req.params);
-  console.log('entrou na rota');
+routes.post('/comandovoz', (req, res) => {
   console.log(req.body.queryResult.queryText);
   console.log(req.body.queryResult.parameters);
+  // let { queryText, queryText } = req.body.queryResult;
+  // const publishment = commands[queryText];
+  // mqttClient.publish(publishment.topic, 'LIGAR');
   return res.status(200);
-  // return res.json({
-  //   fulfillmentMessages: [
-  //     {
-  //       text: {
-  //         text: ['Respondeu'],
-  //       },
-  //     },
-  //   ],
-  // });
 });
 
 export default routes;
