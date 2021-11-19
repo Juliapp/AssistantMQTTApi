@@ -11,6 +11,7 @@ routes.get('/', (req, res) => {
 
 routes.get('/comandovoz/arcondicionado', (req, res) => {
   mqttClient.publish('ARCONDICIONADO/LIGAR', 'LIGAR');
+  console.log(req.params, req.body, req.params);
   return res.status(200);
   // return res.json({
   //   fulfillmentMessages: [
