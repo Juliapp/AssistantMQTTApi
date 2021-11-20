@@ -1,62 +1,72 @@
 export default {
-  'Ligar modo automático': {
+  'AM-Ligar': {
     topic: 'AUTOMATICMODE/SETLIGADO',
-    message: '',
+    message: 'LIGAR',
   },
-  'Desligar modo automático': {
+  'AM-Desligar': {
     topic: 'AUTOMATICMODE/SETDESLIGADO',
-    message: '',
+    message: 'DESLIGAR',
   },
   'AC-ligar': {
     topic: 'ARCONDICIONADO/LIGAR',
     message: 'LIGAR',
   },
-  'Desligar ar condicionado': {
+  'AC-Desligar': {
     topic: 'AC/SETDESLIGADO',
     message: 'DESLIGAR',
   },
   'AC-TempMax': {
     topic: 'AC/SETTEMPERATURAMAX',
-    message: '',
   },
-  'Temperatura mínima ${x}': {
+  'AC-TempMin': {
     topic: 'AC/SETTEMPERATURAMIN',
-    message: '',
   },
-  'Resetar configurações do ar condicionado': {
+  'AC-Reset': {
     topic: 'AC/RESET',
-    message: '',
+    message: 'RESET',
   },
-  'Ligar Iluminação do Jardim': {
+  'ILJ-Ligar': {
     topic: 'JARDIM/ILUMINACAO/SETLIGADO',
-    message: '',
+    message: 'LIGAR',
   },
-  'Desligar Iluminação do Jardim': {
+  'ILJ-Desligar': {
     topic: 'JARDIM/ILUMINACAO/SETDESLIGADO',
-    message: '',
+    message: 'DESLIGAR',
   },
-  'Iluminação do Jardim horário máximo ${x}': {
+  'ILJ-HourMax': {
     topic: 'JARDIM/ILUMINACAO/SETHORARIOMAXIMO',
-    message: '',
   },
-  'Iluminação do Jardim horário mínimo ${x}': {
+  'ILJ-HourMin': {
     topic: 'GARAGEM/ILUMINACAO/SETHORARIOMINIMO',
-    message: '',
   },
-  'Ligar Iluminação interna': {
+  'ILI-Ligar': {
     topic: 'INTERNO/ILUMINACAO/SETLIGADO',
-    message: '',
+    message: 'Ligar',
   },
-  'Desligar Iluminação interna': {
+  'ILI-Desligar': {
     topic: 'INTERNO/ILUMINACAO/SETDESLIGADO',
-    message: '',
+    message: 'DESLIGAR',
   },
-  'Ligar alarme': {
+  'AL-Ligar': {
     topic: 'ALARME/SETLIGADO',
-    message: '',
+    message: 'LIGAR',
   },
-  'Desligar alarme': {
+  'AL-Desligar': {
     topic: 'ALARME/SETDESLIGADO',
-    message: '',
+    message: 'DESLIGAR',
+  },
+  'ILG-Ligar': {
+    topic: 'GARAGEM/ILUMINACAO/SETLIGADO',
+    message: 'LIGAR',
+  },
+  'ILG-Desligar': {
+    topic: 'GARAGEM/ILUMINACAO/SETDESLIGADO',
+    message: 'DESLIGAR',
+  },
+  'ILG-HourMax': {
+    topic: 'GARAGEM/ILUMINACAO/SETHORARIOMAXIMO',
+  },
+  'ILG-HourMin': {
+    topic: 'GARAGEM/ILUMINACAO/SETHORARIOMINIMO',
   },
 };
