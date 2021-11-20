@@ -17,7 +17,7 @@ routes.post('/comandovoz', (req, res) => {
   // let { queryText, queryText } = req.body.queryResult;
   // const publishment = commands[queryText];
   // mqttClient.publish(publishment.topic, 'LIGAR');
-  return res.status(200);
+  return res.send('ok').status(200);
 });
 
 export default routes;
