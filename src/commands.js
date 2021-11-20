@@ -7,7 +7,7 @@ export default {
     topic: 'AUTOMATICMODE/SETDESLIGADO',
     message: '',
   },
-  'ligar ar condicionado': {
+  'AC-ligar': {
     topic: 'ARCONDICIONADO/LIGAR',
     message: 'LIGAR',
   },
@@ -15,7 +15,7 @@ export default {
     topic: 'AC/SETDESLIGADO',
     message: 'DESLIGAR',
   },
-  'Temperatura máxima ${x}': {
+  'AC-tempMax': {
     topic: 'AC/SETTEMPERATURAMAX',
     message: '',
   },
