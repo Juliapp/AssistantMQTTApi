@@ -15,7 +15,7 @@ export default {
     topic: 'AC/SETDESLIGADO',
     message: 'DESLIGAR',
   },
-  'AC-tempMax': {
+  'AC-TempMax': {
     topic: 'AC/SETTEMPERATURAMAX',
     message: '',
   },
