@@ -12,6 +12,7 @@ routes.get('/', (req, res) => {
 routes.post('/comandovoz', (req, res) => {
   // console.log(req.body?.queryResult.queryText);
   // console.log(req.body?.queryResult.parameters);
+
   console.log('conseguiu');
   // let { queryText, queryText } = req.body.queryResult;
   // const publishment = commands[queryText];
