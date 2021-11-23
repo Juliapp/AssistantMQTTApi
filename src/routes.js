@@ -13,10 +13,14 @@ routes.post('/comandovoz', (req, res) => {
   // console.log(req.body?.queryResult.queryText);
   // console.log(req.body?.queryResult.parameters);
 
-  let { queryText, intent } = req.body.queryResult;
+  let { intent } = req.body.queryResult;
   const publishment = commands[intent.displayName];
-  console.log(publishment);
-  // mqttClient.publish(publishment.topic, 'LIGAR');
+  console.log(queryResult);
+  // console.log(publishment);
+  let { topic, message } = publishment;
+  let message = messaage ?? queryResult.parameters.params;
+  console.log(topic, message);
+  // mqttClient.publish(topic, message);
   return res.send('ok').status(200);
 });
 
