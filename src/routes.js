@@ -19,7 +19,7 @@ routes.post('/comandovoz', (req, res) => {
     let { topic, message } = publishment;
 
     let mqttMessage = message ? message : queryResult.parameters.param;
-    mqttClient.publish(topic, mqttMessage);
+    mqttClient.publish(topic, `${mqttMessage}`);
     return res.send('ok').status(200);
   }
 
