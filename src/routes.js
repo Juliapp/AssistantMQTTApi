@@ -21,8 +21,9 @@ routes.post('/comandovoz', (req, res) => {
     let { intent } = queryResult;
 
     const publishment = commands[intent.displayName];
-    // console.log(publishment);
+    console.log(publishment);
     let { topic, message } = publishment;
+
     let mqttMessage = messaage ? message : queryResult.parameters.params;
     console.log(topic, mqttMessage);
     // mqttClient.publish(topic, message);
