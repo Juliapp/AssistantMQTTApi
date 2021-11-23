@@ -5,7 +5,6 @@ const mqttClient = await startClient();
 const routes = Router();
 
 routes.get('/', (req, res) => {
-  mqttClient.publish('hello', 'mandeiii');
   return res.send('Application is running');
 });
 
