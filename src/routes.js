@@ -17,7 +17,8 @@ routes.post('/comandovoz', (req, res) => {
 
   if (req.body.queryResult) {
     // let { intent } = req.body.queryResult;
-    let { intent } = req.body.queryResult;
+    let queryResult = req.body.queryResult;
+    let { intent } = queryResult;
 
     const publishment = commands[intent.displayName];
     console.log(queryResult);
