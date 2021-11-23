@@ -18,8 +18,8 @@ routes.post('/comandovoz', (req, res) => {
   console.log(queryResult);
   // console.log(publishment);
   let { topic, message } = publishment;
-  let message = messaage ?? queryResult.parameters.params;
-  console.log(topic, message);
+  let mqttMessage = messaage ?? queryResult.parameters.params;
+  console.log(topic, mqttMessage);
   // mqttClient.publish(topic, message);
   return res.send('ok').status(200);
 });
