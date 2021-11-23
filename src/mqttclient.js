@@ -18,6 +18,16 @@ export const startClient = async () => {
     console.log('Connected to mqtt broker');
   });
 
+  client.on('packetsend', (event) => {
+    console.log(
+      `MESSAGE SENT TO BROKER TYPE: ${event.cmd} ${
+        event.topic && event.payload
+          ? `| TOPIC: ${event.topic} and PAYLOAD: ${event.payload}`
+          : ''
+      }`
+    );
+  });
+
   client.on('disconnect', (e) => {
     console.log('disconnect');
     console.log(e);

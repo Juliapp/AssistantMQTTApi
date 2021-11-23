@@ -10,28 +10,19 @@ routes.get('/', (req, res) => {
 });
 
 routes.post('/comandovoz', (req, res) => {
-  // console.log(req.body?.queryResult.queryText);
-  // console.log(req.body?.queryResult.parameters);
-
-  console.log(req.body);
-
   if (req.body.queryResult) {
     // let { intent } = req.body.queryResult;
     let queryResult = req.body.queryResult;
     let { intent } = queryResult;
 
     const publishment = commands[intent.displayName];
-    console.log(publishment);
     let { topic, message } = publishment;
 
-    let mqttMessage = messaage ? message : queryResult.parameters.params;
-    console.log(topic, mqttMessage);
-    // mqttClient.publish(topic, message);
-    console.log('return 200');
+    let mqttMessage = message ? message : queryResult.parameters.param;
+    mqttClient.publish(topic, mqttMessage);
     return res.send('ok').status(200);
   }
 
-  console.log('return 400');
   return res.send('not ok').status(404);
 });
 
