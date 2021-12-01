@@ -8,7 +8,7 @@ export default {
     message: 'DESLIGAR',
   },
   'AC-ligar': {
-    topic: 'ARCONDICIONADO/LIGAR',
+    topic: 'AC/SETLIGADO',
     message: 'LIGAR',
   },
   'AC-Desligar': {
@@ -56,11 +56,11 @@ export default {
     message: 'DESLIGAR',
   },
   'ILG-Ligar': {
-    topic: 'GARAGEM/ILUMINACAO/SETLIGADO',
+    topic: 'GARAGEM/ILUMINACAO/LIGADO',
     message: 'LIGAR',
   },
   'ILG-Desligar': {
-    topic: 'GARAGEM/ILUMINACAO/SETDESLIGADO',
+    topic: 'GARAGEM/ILUMINACAO/DESLIGADO',
     message: 'DESLIGAR',
   },
   'ILG-HourMax': {
