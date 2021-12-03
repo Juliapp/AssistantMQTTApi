@@ -19,13 +19,10 @@ routes.post('/comandovoz', (req, res) => {
 
     let mqttMessage = message ? message : queryResult.parameters.param;
     mqttClient.publish(topic, `${mqttMessage}`);
+
     return res.json({
-      speech:
-        'Cant find any previous game played between Kings and ' +
-        parameters.team,
-      displayText:
-        'Cant find any previous game played between Kings and ' +
-        parameters.team,
+      speech: 'Cant find any previous game played between Kings and',
+      displayText: 'Cant find any previous game played between Kings and',
       source: 'game schedule',
     });
   }
