@@ -8,9 +8,11 @@ export var cron;
 export var lastPing;
 export var time_cron = 1;
 
-export function restartCron(time_cron) {
+export function restartCron(time) {
+  time_cron = time;
   cron.stop();
-  cron = new CronJob(`*/${time_cron} * * * *`, function () {
+
+  cron = new CronJob(`*/${time} * * * *`, function () {
     client.publish('PINGREQUEST', 'pingrequest');
   });
   cron.start();

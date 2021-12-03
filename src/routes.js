@@ -38,7 +38,6 @@ routes.get('/timecron', (req, res) => {
 
 routes.post('/reset-ping', (req, res) => {
   const { time_cron } = req.body;
-
   restartCron(time_cron);
   res.json({ ping: 'status changed' });
 });
