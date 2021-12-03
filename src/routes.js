@@ -15,13 +15,13 @@ routes.post('/comandovoz', (req, res) => {
     let { intent } = queryResult;
 
     const publishment = commands[intent.displayName];
-    let { topic, message } = publishment;
+    let { topic, message, fulfillmentText } = publishment;
 
     let mqttMessage = message ? message : queryResult.parameters.param;
     mqttClient.publish(topic, `${mqttMessage}`);
 
     return res.json({
-      fulfillmentText: 'response from the webhook',
+      fulfillmentText,
     });
   }
 
