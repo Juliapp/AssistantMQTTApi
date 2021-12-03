@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { startClient, cron, lastPing, time_cron } from './mqttclient.js';
+import { CronJob } from 'cron';
 import commands from './commands.js';
 const mqttClient = await startClient();
 const routes = Router();
