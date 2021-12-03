@@ -21,9 +21,7 @@ routes.post('/comandovoz', (req, res) => {
     mqttClient.publish(topic, `${mqttMessage}`);
 
     return res.json({
-      speech: 'Cant find any previous game played between Kings and',
-      displayText: 'Cant find any previous game played between Kings and',
-      source: 'game schedule',
+      fulfillmentText: 'response from the webhook',
     });
   }
 
