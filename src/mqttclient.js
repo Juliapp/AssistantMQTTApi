@@ -94,7 +94,7 @@ let statusDispositivos = [
   },
   {
     status: '',
-    trigger: 'do alarme',
+    trigger: 'alarme',
   },
 ];
 
