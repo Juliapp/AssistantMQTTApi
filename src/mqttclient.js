@@ -73,7 +73,6 @@ export const startClient = async () => {
   });
 
   client.on('message', (aa) => {
-    console.log('pingou');
     lastPing = Date.now();
   });
 
