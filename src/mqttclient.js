@@ -103,7 +103,7 @@ export function getState(input) {
 
   const status =
     statusDispositivos.find((value) => {
-      console.log('buscando');
+      console.log('buscando', value);
       value.trigger.localeCompare(input, undefined, {
         sensitivity: 'base',
       });
