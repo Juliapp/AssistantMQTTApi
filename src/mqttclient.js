@@ -41,59 +41,45 @@ export function isOnline() {
 
 let statusDispositivos = [
   {
-    status: '',
     trigger: '"modo automatico"',
   },
   {
-    status: '',
     trigger: 'iluminação do jardim',
   },
   {
-    status: '',
     trigger: 'hora maxima jardim',
   },
   {
-    status: '',
     trigger: 'hora minima jardim',
   },
   {
-    status: '',
     trigger: 'luz interna',
   },
   {
-    status: '',
     trigger: 'luz da garagem',
   },
   {
-    status: '',
     trigger: 'hora maxima luz da garagem',
   },
   {
-    status: '',
     trigger: 'hora minima luz da garagem',
   },
   {
-    status: '',
     trigger: 'ar condicionado',
   },
   {
-    status: '',
     trigger: 'temperatura do ar condicionado',
   },
   {
-    status: '',
     trigger: 'temperatura maxima do ar condicionado',
   },
   {
-    status: '',
     trigger: 'temperatura minima do ar condicionado',
   },
   {
-    status: '',
     trigger: 'tempo do ar condicionado com ausencia de pessoas',
   },
   {
-    status: '',
     trigger: 'alarme',
   },
 ];
