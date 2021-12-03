@@ -85,15 +85,14 @@ let statusDispositivos = [
 ];
 
 export function getState(input) {
-  console.table(statusDispositivos);
-
   const status =
     statusDispositivos.find((value) => {
-      console.log('buscando', value);
-      value.trigger.localeCompare(input, undefined, {
+      let compare = value.trigger.localeCompare(input, undefined, {
         sensitivity: 'base',
       });
-      return value.status;
+      if (compare === 0) {
+        return value.status;
+      }
     }) || 'Não encontrado';
 
   return status.status ? status.status : status;
@@ -184,8 +183,6 @@ export const startClient = async () => {
         statusDispositivos[0].status = convertedPayload;
         break;
       case TOPIC_ILUMINACAO_JARDIM:
-        console.log('message que chegou', message);
-        console.log('convertido', convertedPayload);
         statusDispositivos[1].status = convertedPayload;
         break;
       case TOPIC_ILUMINACAO_JARDIM_MAX:
