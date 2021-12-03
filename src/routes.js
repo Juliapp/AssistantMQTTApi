@@ -21,6 +21,15 @@ routes.post('/comandovoz', (req, res) => {
     let { intent } = queryResult;
     let { displayName } = intent;
 
+    if (displayName === 'TempoPing') {
+      let temp = queryResult.parameters.param;
+      restartCron(temp);
+
+      return res.json({
+        fulfillmentText: `Tempo de ping alterado para ${temp} minuto(s)`,
+      });
+    }
+
     if (displayName === 'Estado') {
       if (!isOnline()) {
         return res.json({
