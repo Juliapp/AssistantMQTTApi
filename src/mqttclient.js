@@ -1,7 +1,12 @@
 // var mqtt = require('mqtt')
 import mqtt from 'mqtt';
 import dotenv from 'dotenv';
+import { CronJob } from 'cron';
 dotenv.config();
+
+export var cron;
+export var lastPing;
+export var time_cron = 1;
 
 export const startClient = async () => {
   let options = {
@@ -16,6 +21,15 @@ export const startClient = async () => {
 
   client.on('connect', function () {
     console.log('Connected to mqtt broker');
+
+    client.subscribe('PINGRESPONSE');
+    client.publish('PINGREQUEST', 'pingrequest');
+
+    cron = new CronJob(`* * * * *`, function () {
+      client.publish('PINGREQUEST', 'pingrequest');
+    });
+
+    cron.start();
   });
 
   client.on('packetsend', (event) => {
@@ -46,6 +60,11 @@ export const startClient = async () => {
   client.on('error', (err) => {
     console.log('error');
     console.log(err);
+  });
+
+  client.on('message', (aa) => {
+    console.log('pingou');
+    lastPing = Date.now();
   });
 
   return client;

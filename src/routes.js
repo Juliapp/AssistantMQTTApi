@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { startClient } from './mqttclient.js';
+import { startClient, cron, lastPing, time_cron } from './mqttclient.js';
 import commands from './commands.js';
 const mqttClient = await startClient();
 const routes = Router();
@@ -23,6 +23,24 @@ routes.post('/comandovoz', (req, res) => {
   }
 
   return res.send('not ok').status(404);
+});
+
+routes.get('/ping', (req, res) => {
+  let now = Date.now();
+  let time_milisseconds = time_cron * 60 * 1000;
+  let ping = now < time_milisseconds + lastPing;
+  res.json({ isOnline: ping });
+});
+
+routes.post('/reset-ping', (req, res) => {
+  const { time_cron } = req.body;
+  cron.stop();
+  cron = new CronJob(`*/${time_cron} * * * *`, function () {
+    client.publish('PINGREQUEST', 'pingrequest');
+  });
+  cron.start();
+
+  res.json({ ping: 'status changed' });
 });
 
 export default routes;
