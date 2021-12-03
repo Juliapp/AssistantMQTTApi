@@ -41,7 +41,7 @@ export function isOnline() {
 
 let statusDispositivos = [
   {
-    trigger: '"modo automatico"',
+    trigger: 'modo automatico',
   },
   {
     trigger: 'iluminação do jardim',
