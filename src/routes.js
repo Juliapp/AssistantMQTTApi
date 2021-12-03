@@ -1,5 +1,11 @@
 import { Router } from 'express';
-import { startClient, restartCron, lastPing, time_cron } from './mqttclient.js';
+import {
+  startClient,
+  restartCron,
+  time_cron,
+  isOnline,
+  getState,
+} from './mqttclient.js';
 import commands from './commands.js';
 const mqttClient = await startClient();
 const routes = Router();
@@ -13,26 +19,44 @@ routes.post('/comandovoz', (req, res) => {
     // let { intent } = req.body.queryResult;
     let queryResult = req.body.queryResult;
     let { intent } = queryResult;
+    let { displayName } = intent;
 
-    const publishment = commands[intent.displayName];
-    let { topic, message, fulfillmentText } = publishment;
+    if (displayName === 'Estado') {
+      if (!isOnline()) {
+        return res.json({
+          fulfillmentText: 'Sem comunicação com a raspberry',
+        });
+      }
 
-    let mqttMessage = message ? message : queryResult.parameters.param;
-    mqttClient.publish(topic, `${mqttMessage}`);
+      let device = queryResult.parameters.device;
+      const status = getState(device);
+      console.log(status);
+      if (status) {
+        return res.json({
+          fulfillmentText: status,
+        });
+      }
+      //////  RESPONDER
+    } else {
+      const publishment = commands[displayName];
+      let { topic, message, fulfillmentText } = publishment;
 
-    return res.json({
-      fulfillmentText,
-    });
+      let mqttMessage = message ? message : queryResult.parameters.param;
+      mqttClient.publish(topic, `${mqttMessage}`);
+
+      if (fulfillmentText) {
+        return res.json({
+          fulfillmentText,
+        });
+      }
+    }
+
+    return res.send('not ok').status(404);
   }
-
-  return res.send('not ok').status(404);
 });
 
 routes.get('/ping', (req, res) => {
-  let now = Date.now();
-  let time_milisseconds = time_cron * 60 * 1000;
-  let ping = now < time_milisseconds + lastPing;
-  res.json({ isOnline: ping });
+  res.json({ isOnline: isOnline() });
 });
 
 routes.get('/timecron', (req, res) => {
