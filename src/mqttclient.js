@@ -99,7 +99,7 @@ let statusDispositivos = [
 ];
 
 export function getState(input) {
-  console.log;
+  console.table(statusDispositivos);
 
   const status =
     statusDispositivos.find((value) => {
@@ -198,6 +198,8 @@ export const startClient = async () => {
         statusDispositivos[0].status = convertedPayload;
         break;
       case TOPIC_ILUMINACAO_JARDIM:
+        console.log('message que chegou', message);
+        console.log('convertido', convertedPayload);
         statusDispositivos[1].status = convertedPayload;
         break;
       case TOPIC_ILUMINACAO_JARDIM_MAX:
