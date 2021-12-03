@@ -8,6 +8,14 @@ export var cron;
 export var lastPing;
 export var time_cron = 1;
 
+export function restartCron(time_cron) {
+  cron.stop();
+  cron = new CronJob(`*/${time_cron} * * * *`, function () {
+    client.publish('PINGREQUEST', 'pingrequest');
+  });
+  cron.start();
+}
+
 export const startClient = async () => {
   let options = {
     host: process.env.HIHOST,

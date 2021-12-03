@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { startClient, cron, lastPing, time_cron } from './mqttclient.js';
-import { CronJob } from 'cron';
+import { startClient, restartCron, lastPing, time_cron } from './mqttclient.js';
 import commands from './commands.js';
 const mqttClient = await startClient();
 const routes = Router();
@@ -39,12 +38,8 @@ routes.get('/timecron', (req, res) => {
 
 routes.post('/reset-ping', (req, res) => {
   const { time_cron } = req.body;
-  cron.stop();
-  cron = new CronJob(`*/${time_cron} * * * *`, function () {
-    client.publish('PINGREQUEST', 'pingrequest');
-  });
-  cron.start();
 
+  restartCron(time_cron);
   res.json({ ping: 'status changed' });
 });
 
