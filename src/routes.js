@@ -32,6 +32,10 @@ routes.get('/ping', (req, res) => {
   res.json({ isOnline: ping });
 });
 
+routes.get('/timecron', (req, res) => {
+  res.json({ time_cron });
+});
+
 routes.post('/reset-ping', (req, res) => {
   const { time_cron } = req.body;
   cron.stop();
